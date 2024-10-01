@@ -8,7 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BookingRepo extends JpaRepository<Booking,Long> {
-    //@Query("select * from ")
+
     Optional<List<Booking>> findAllByDriverId(Long driverId);
+
+    List<Booking> findAllByDriverIn(List<Driver> drivers);//findAllByDriverIn: JPA method
 
 }

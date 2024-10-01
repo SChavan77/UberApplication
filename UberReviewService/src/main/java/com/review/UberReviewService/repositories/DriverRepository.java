@@ -31,6 +31,8 @@ public interface DriverRepository extends JpaRepository<Driver,Long> {
 
     @Query("SELECT d.id,d.name FROM Driver d where d.id= :id AND d.licenseNumber= :lNumber")
     Optional<CustomDriver> rawFindByIdAndLicenseNumberV4(Long id, String lNumber); //Using DTO
+
+    List<Driver> findAllByIdIn(List<Long> d_Ids);
 }
 //Use @Param for query method parameters, or when on Java 8+ use the javac flag -parameters
 /**
