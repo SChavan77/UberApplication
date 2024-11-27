@@ -26,11 +26,11 @@ public interface DriverRepository extends JpaRepository<Driver,Long> {
     Optional<Driver> rawFindByIdAndLicenseNumberV3(Long id, String lNumber);
     */
 
-    @Query("SELECT d.id,d.name FROM Driver d where d.id= :id AND d.licenseNumber= :lNumber")
-    Optional<DriverInfoI> rawFindByIdAndLicenseNumberV3(Long id, String lNumber); //Using DriverInofI Interface
+   /* @Query("SELECT d.id,d.name FROM Driver d where d.id= :id AND d.licenseNumber= :lNumber")
+    Optional<DriverInfoI> rawFindByIdAndLicenseNumberV3(Long id, String lNumber); //Using DriverInofI Interface*/
 
-    @Query("SELECT d.id,d.name FROM Driver d where d.id= :id AND d.licenseNumber= :lNumber")
-    Optional<CustomDriver> rawFindByIdAndLicenseNumberV4(Long id, String lNumber); //Using DTO
+  /*@Query("SELECT d.id,d.name FROM Driver d where d.id= :id AND d.licenseNumber= :lNumber")
+    Optional<CustomDriver> rawFindByIdAndLicenseNumberV4(Long id, String lNumber); //Using DTO*/
 
     List<Driver> findAllByIdIn(List<Long> d_Ids);
 }

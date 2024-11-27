@@ -303,10 +303,6 @@ Get all the bookings of each drivers.
 Solve by,
 1) Using JPA in-built methods
 2) Using Fetch Mode( In @OneToMany declared class field) - Transactional in service layer on the fetching method.
-```text
-
-```
-
 
 **DB VERSIONING:**
 Convention: resources/db/migration/V1...,V2.... sql files are kept.
@@ -318,11 +314,21 @@ To propagate to the DB: Run the project.
 **DB RollBack:**
 flyway undo: One stepback Rollback only.
 For some x step's done changes to undo: say I'm at V5 of DV. need to undo V3 changes.
-Not ideal choice: V5>V4>V3. No
+Not ideal choice: V5>V4>`V3. No
 
 We need to undo only V3. DO manual migration steps only. Need to drollback script.
 Eg: ALTER TABLE DRIVER DROP COLUMN address;
 
 Liquibase & Flyway:+ JPA Buddy: Tool
 As we're basically writing SQL, we need not have the tool.
+
+**CASCADE TYPES**
+PERSIST, MERGE, REMOVE, REFRESH, DETACH, ALL
+
+**ADAPTER DESIGN PATTERN**
+When we need to make drastic changes in our product due to some other requirements.
+2 or more incompatible interfaces or classes can't work together. Adapter pattern helps in enabling this.
+
+
+
 

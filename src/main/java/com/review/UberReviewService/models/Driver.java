@@ -22,8 +22,8 @@ import java.util.List;
 public class Driver extends BaseModel{
 
     private String name;
-
     private String address;
+    private String phoneNumber;
 
     @Column(nullable = true, unique = true)
     private String licenseNumber;

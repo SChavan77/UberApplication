@@ -23,7 +23,7 @@ public class Review extends BaseModel{ //if nothing mentioned in name in @Entity
 
     /*To fix: Cannot use identity column key generation with <union-subclass> mapping for:
     com.review.UberReviewService.models.DriverReview:Change GenerationType to TABLE; hibernate_sequences*/
-    @Id
+   @Id
     @GeneratedValue(strategy=GenerationType.TABLE)
     private Long id;
 
@@ -32,6 +32,11 @@ public class Review extends BaseModel{ //if nothing mentioned in name in @Entity
 
     @Column
     private Double rating;
+
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
+    private Booking booking; // we have defined a 1:1 relationship between booking and review
+
 
     /* BEFORE JPA Inheritance
     @Column(nullable = false)
@@ -48,11 +53,8 @@ public class Review extends BaseModel{ //if nothing mentioned in name in @Entity
     @Override
     public String toString() {
         return "Review{" +
-                "id=" + id +
                 ", content='" + content + '\'' +
                 ", rating=" + rating +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
                 '}';
     }
 }

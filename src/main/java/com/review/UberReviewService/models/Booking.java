@@ -14,8 +14,14 @@ import java.util.List;
 @Entity
 public class Booking extends BaseModel {
 
-        @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY) //all the dependent entries(review entry) will be peristed 1st and then the dependent table entry.
-        private Review review;
+       /* @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy = "booking") //all the dependent entries(review entry) will be peristed 1st and then the dependent table entry.
+        private Review review; //1:1 relationship between booking & review //cascade={CascadeType.PERSIST,CascadeType.REMOVE}
+        */
+        //Changed to Booking has many reviews relation
+        @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE}, fetch = FetchType.LAZY) //all the dependent entries(review entry) will be peristed 1st and then the dependent table entry.
+        @JoinColumn(name = "review_id", referencedColumnName = "id", nullable = true)
+        private Review review; //1:1 relationship between booking & review //cascade={CascadeType.PERSIST,CascadeType.REMOVE}
+
 
         //To specify it as a enum attribute. If not specified, it takes default ORDINAL
         @Enumerated(value= EnumType.STRING) //By default(ORDINAL) tinyInt it takes
